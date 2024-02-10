@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import StudentContextProvider from "./context/StudentContextProvider";
+import StudentLogin from "./components/StudentLogin";
+import StudentProfile from "./components/StudentProfile";
+import UserContextProvider from "./context/UserContextProvider";
+import EmployeeContextProvider from "./context/EmployeeContextProvider";
+import EmployeeLogin from "./components/EmployeeLogin";
+import EmployeeProfile from "./components/EmployeeProfile";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContextProvider>
+      <StudentContextProvider>
+        <EmployeeContextProvider>
+          <div className="App-header">
+            <h1>Context API</h1>
+            <Login />
+            <Profile />
+            <StudentLogin />
+            <StudentProfile />
+            <EmployeeLogin />
+            <EmployeeProfile />
+          </div>
+        </EmployeeContextProvider>
+      </StudentContextProvider>
+    </UserContextProvider>
   );
 }
 
